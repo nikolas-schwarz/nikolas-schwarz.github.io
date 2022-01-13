@@ -1,0 +1,11 @@
+[meta]
+author = "Nikolas Schwarz"
+description = "Some programming nerd, who shares his mischief with you."
+keywords = "projects,webprojects,development"
+
+[appleMobileWebApp]
+title = "Nikolas Schwarz"
+statusBarStyle = "black"
+
+[og]
+image = "https://avatars.githubusercontent.com/u/6736204?v=4"

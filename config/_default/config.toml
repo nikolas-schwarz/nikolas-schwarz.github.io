@@ -1,0 +1,44 @@
+baseURL = 'https://nikolas-schwarz.github.io/'
+languageCode = 'en-gb'
+title = 'Nikolas Schwarz'
+
+theme = "dotty-matrix"
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+disableHugoGeneratorInject = true
+
+disableKinds = ["taxonomy"]
+enableRobotsTXT = true
+
+ignoreErrors = ["error-disable-taxonomy"]
+
+[build]
+    noJSConfigInAssets = true
+    useResourceCacheWhen = 'fallback'
+    writeStats = true
+
+[minify]
+    minifyOutput = true
+    [minify.tdewolff]
+        [minify.tdewolff.css]
+            keepCSS2 = true
+            precision = 0
+        [minify.tdewolff.html]
+            keepComments = true
+            keepConditionalComments = true
+            keepDefaultAttrVals = true
+            keepDocumentTags = true
+            keepEndTags = true
+            keepQuotes = true
+            keepWhitespace = true
+        [minify.tdewolff.js]
+            keepVarNames = true
+            precision = 0
+        [minify.tdewolff.json]
+            keepNumbers = true
+            precision = 0
+        [minify.tdewolff.svg]
+            precision = 0
+        [minify.tdewolff.xml]
+            keepWhitespace = true

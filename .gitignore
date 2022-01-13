@@ -18,6 +18,7 @@ Temporary Items
 # ignore temporary code files
 ._*
 _*
+!_default
 
 # ignore build folder
 docs/
