@@ -64,8 +64,8 @@
 
 	{{ "<!-- Stylesheets -->" | safeHTML }}
 	{{ if hugo.IsProduction }} 
-		{{ $options := (dict "outputStyle" "compressed") }}
-		{{ $style := resources.Get "css/style.scss" | resources.ToCSS $options | minify }}
+        {{ $css := resources.Get "css/style.css" }}
+        {{ $style := $css | resources.Minify }}
 		<style>
 			{{ $style.Content | safeCSS }}
 		</style>
