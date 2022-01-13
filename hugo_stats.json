@@ -1,0 +1,22 @@
+{
+  "htmlElements": {
+    "tags": [
+      "base",
+      "body",
+      "footer",
+      "h1",
+      "head",
+      "header",
+      "html",
+      "link",
+      "main",
+      "meta",
+      "script",
+      "title"
+    ],
+    "classes": null,
+    "ids": [
+      "content"
+    ]
+  }
+}

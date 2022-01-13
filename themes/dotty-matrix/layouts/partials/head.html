@@ -1,0 +1,90 @@
+<head>
+	{{ "<!-- Web Page base url -->" | safeHTML }}
+	<base href="{{ .Site.BaseURL }}">
+
+	{{ "<!-- Web Page title -->" | safeHTML }}
+	<title>{{ .Title }}</title>
+
+	{{ "<!-- Web application name -->" | safeHTML }}
+	<meta name="application-name" content="{{ .Title }}" />
+
+	{{ "<!-- IE browser meta -->" | safeHTML }}
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	
+	{{ with site.Params.appleMobileWebApp }}
+		{{ "<!-- SEO meta -->" | safeHTML }}
+		<meta name="robots" content="index,follow" />
+		
+		{{ with site.Params.meta.author }}
+			<meta name="author" content="{{ . }}" />
+		{{ end }}
+
+		{{ with site.Params.meta.description }}
+			<meta name="description" content="{{ . }}" />
+		{{ end }}
+
+		{{ with site.Params.meta.keywords }}
+			<meta name="keywords" content="{{ . }}" />
+		{{ end }}
+	{{ end }}
+	
+	{{ with site.Params.appleMobileWebApp }}
+		{{ "<!-- Apple Shortcut meta -->" | safeHTML }}
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		
+		{{ with site.Params.appleMobileWebApp.statusBarStyle }}
+			<meta name="apple-mobile-web-app-status-bar-style" content="{{ . }}" />
+		{{ end }}
+
+		{{ with site.Params.appleMobileWebApp.title }}
+			<meta name="apple-mobile-web-app-title" content="{{ . }}" />
+		{{ end }}
+	{{ end }}
+
+    {{ with site.Params.og }}
+		{{ "<!-- Open Graph meta -->" | safeHTML }}
+		{{ with site.Params.meta.author }}
+            <meta property="og:title" content="{{ . }}" />
+		{{ end }}
+
+		{{ with site.Params.meta.description }}
+            <meta property="og:description" content="{{ . }}" />
+		{{ end }}
+
+        {{ with site.Params.og.image }}
+            <meta property="og:image" content="{{ . }}" />
+		{{ end }}
+	{{ end }}    
+  
+	{{ "<!-- Mobile responsive meta -->" | safeHTML }}
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	{{ "<!-- Content encoding meta -->" | safeHTML }}
+	<meta charset="utf-8" />
+
+	{{ "<!-- Stylesheets -->" | safeHTML }}
+	{{ if hugo.IsProduction }} 
+		{{ $options := (dict "outputStyle" "compressed") }}
+		{{ $style := resources.Get "css/style.scss" | resources.ToCSS $options | minify }}
+		<style>
+			{{ $style.Content | safeCSS }}
+		</style>
+	{{ else }}
+		{{ $options := (dict "enableSourceMap" true) }}
+		{{ $style := resources.Get "css/style.scss" | resources.ToCSS $options }}
+		<link href="{{ $style.Permalink }}" rel="stylesheet" />
+	{{ end }}
+	
+	{{ "<!-- JavaScript -->" | safeHTML }}
+	{{ if hugo.IsProduction }} 
+		{{ $scripts := resources.Get "js/global.js" | minify | resources.Fingerprint "sha512" }}
+		<script src="{{ $scripts.Permalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
+	{{ else }}
+		{{ $scripts := resources.Get "js/global.js" }}
+		<script src="{{ $scripts.Permalink }}" ></script>
+	{{ end }}
+	
+	{{ "<!-- Favicon -->" | safeHTML }}
+	<link rel="shortcut icon" href="{{ "images/favicon.png" | absURL }}" type="image/png" />
+	<link rel="icon" href="{{ "images/favicon.png" | absURL }}" type="image/x-icon" />
+</head>
