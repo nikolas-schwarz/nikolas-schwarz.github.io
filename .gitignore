@@ -19,6 +19,7 @@ Temporary Items
 ._*
 _*
 !_default
+!_*.scss
 
 # ignore build folder
 docs/
