@@ -29,3 +29,7 @@
 
 @import "base/variables";
 @import "base/reset";
+
+body {
+    margin: $main-padding;
+}
