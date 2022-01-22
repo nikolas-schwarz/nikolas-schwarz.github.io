@@ -78,7 +78,7 @@
 	{{ "<!-- JavaScript -->" | safeHTML }}
 	{{ if hugo.IsProduction }} 
 		{{ $scripts := resources.Get "js/global.js" | minify | resources.Fingerprint "sha512" }}
-		<script src="{{ $scripts.Permalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
+		<script src="{{ $scripts.Permalink }}" integrity="{{ $scripts.Data.Integrity }}" defer></script>
 	{{ else }}
 		{{ $scripts := resources.Get "js/global.js" }}
 		<script src="{{ $scripts.Permalink }}" ></script>
